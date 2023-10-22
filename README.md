@@ -10,7 +10,7 @@ Data warehouse: Clickhouse (Done)
 
 Orchestrator: Mage (Done)
 
-Datalake: Minio (TODO)
+Datalake: Minio (Done)
 
 Dataviz: Apache Superset (TODO)
 

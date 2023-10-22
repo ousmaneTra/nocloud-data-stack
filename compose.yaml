@@ -30,6 +30,18 @@ services:
     ports:
       - "9000:9000"
       - "8123:8123"
+  minio:
+    image: "quay.io/minio/minio:${MINIO_TAG}"
+    container_name: minio
+    ports:
+      - "29000:9000"
+      - "9090:9090"
+    environment:
+      - "MINIO_ROOT_USER=${MINIO_ROOT_USER}"
+      - "MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9090"
 
 volumes:
   mage_data:
@@ -37,4 +49,6 @@ volumes:
   clickhouse_data:
     driver: local
   clickhouse_logs:
+    driver: local
+  minio_data:
     driver: local
