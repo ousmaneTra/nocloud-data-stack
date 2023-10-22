@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  mageai:
+    image: "mageai/mageai:${MAGE_TAG}"
+    container_name: mageai
+    ports:
+      - "6789:6789"
+    volumes:
+      - .:/home/src
+      - "mage_data:${MAGE_DATA_DIR}"
+    command: "/app/run_app.sh mage start ${MAGE_PROJECT_NAME}"
+    environment:
+      - "MAGE_DATA_DIR=${MAGE_DATA_DIR}"
+  clickhouse:
+    image: "clickhouse/clickhouse-server:${CLICKHOUSE_TAG}"
+    container_name: clickhouse
+    environment:
+      - "CLICKHOUSE_DB=${CLICKHOUSE_DB}"
+      - "CLICKHOUSE_USER=${CLICKHOUSE_USER}"
+      - "CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=${CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT}"
+      - "CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}"
+    volumes:
+      - "clickhouse_data:/var/lib/clickhouse"
+      - "clickhouse_logs:/var/log/clickhouse-server"
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    ports:
+      - "9000:9000"
+      - "8123:8123"
+
+volumes:
+  mage_data:
+      driver: local
+  clickhouse_data:
+    driver: local
+  clickhouse_logs:
+    driver: local
