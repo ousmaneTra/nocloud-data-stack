@@ -33,6 +33,19 @@ services:
     ports:
       - "9000:9000"
       - "8123:8123"
+  init-clickhouse:
+    image: "clickhouse/clickhouse-server:${CLICKHOUSE_TAG}"
+    container_name: init-clickhouse
+    environment:
+      - "CLICKHOUSE_DB=${CLICKHOUSE_DB}"
+      - "CLICKHOUSE_USER=${CLICKHOUSE_USER}"
+      - "CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}"
+    volumes:
+      - ./scripts:/opt/scripts
+    depends_on:
+      - clickhouse
+    entrypoint: /bin/bash
+    command: ["/opt/scripts/create_readonly_user.sh", "${SUPERSET_CLICKHOUSE_USER}", "${SUPERSET_CLICKHOUSE_PASSWORD}"]
   minio:
     image: "quay.io/minio/minio:${MINIO_TAG}"
     container_name: minio

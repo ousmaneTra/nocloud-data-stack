@@ -28,10 +28,10 @@ $ docker compose up -d
 > Note: the folder ./superset/docker is copied from https://github.com/apache/superset/tree/master/docker
 
 ## Have Fun!
-Clickhouse: http://127.0.0.1:8123/play
+Clickhouse: http://localhost:8123/play
 
-Mage: http://127.0.0.1:6789/pipelines
+Mage: http://localhost:6789/pipelines
 
-Minio: http://127.0.0.1:9090/login
+Minio: http://localhost:9090/login
 
-Superset: http://127.0.0.1:8088/login/
+Superset: http://localhost:8088/login/
