@@ -12,15 +12,16 @@ Orchestrator: Mage (Done)
 
 Datalake: Minio (Done)
 
-Dataviz: Apache Superset (In progress)
+Dataviz: Apache Superset (Done)
 
 Data science: JupyterLab (TODO)
 
 
-## Run the components
+## Configure and run the stack
 ```sh
 $ cp .env.template .env && vim .env # set your env values
 $ cp ./superset/$SUPERSET_ENV/.env.template ./superset/$SUPERSET_ENV/.env # edit superset env depending on the value of SUPERSET_ENV values in the previous .env
+$ ./superset-build-image.sh # build "custom-superset" image with dependencies from superset/requirements.txt
 $ docker compose config # verify your final compose file
 $ docker compose up -d
 ```
