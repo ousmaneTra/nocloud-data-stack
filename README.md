@@ -12,14 +12,26 @@ Orchestrator: Mage (Done)
 
 Datalake: Minio (Done)
 
-Dataviz: Apache Superset (TODO)
+Dataviz: Apache Superset (In progress)
 
 Data science: JupyterLab (TODO)
 
 
-## Run
+## Run the components
 ```sh
 $ cp .env.template .env && vim .env # set your env values
+$ cp ./superset/$SUPERSET_ENV/.env.template ./superset/$SUPERSET_ENV/.env # edit superset env depending on the value of SUPERSET_ENV values in the previous .env
 $ docker compose config # verify your final compose file
 $ docker compose up -d
-``
+```
+
+> Note: the folder ./superset/docker is copied from https://github.com/apache/superset/tree/master/docker
+
+## Have Fun!
+Clickhouse: http://127.0.0.1:8123/play
+
+Mage: http://127.0.0.1:6789/pipelines
+
+Minio: http://127.0.0.1:9090/login
+
+Superset: http://127.0.0.1:8088/login/
