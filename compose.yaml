@@ -72,6 +72,19 @@ services:
       "
     volumes:
       - ./scripts/wait-for-it.sh:/tmp/wait-for-it.sh
+  jupyterlab:
+    build: 
+      context: ./jupyterlab
+      args:
+        - "BASE_IMAGE=${JUPYTER_BASE_IMAGE}"
+        - "TAG=${JUPYTER_BASE_IMAGE_TAG}"
+    image: "custom-jupyter:${JUPYTER_BASE_IMAGE_TAG}"
+    container_name: jupyterlab
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    entrypoint: sh -c 'jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root'
 
 volumes:
   mage_data:

@@ -1,0 +1,4 @@
+pyarrow
+duckdb
+polars
+matplotlib

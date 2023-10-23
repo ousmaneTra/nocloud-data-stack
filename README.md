@@ -6,15 +6,11 @@
 
 ## Components
 
-Data warehouse: Clickhouse (Done)
-
-Orchestrator: Mage (Done)
-
-Datalake: Minio (Done)
-
-Dataviz: Apache Superset (Done)
-
-Data science: JupyterLab (TODO)
+Data warehouse: Clickhouse  
+Data integration, orchestrator: Mage  
+Datalake: Minio  
+Dataviz: Apache Superset  
+Data Exploration/Science: JupyterLab
 
 
 ## Configure and run the stack
@@ -36,3 +32,5 @@ Mage: http://localhost:6789/pipelines
 Minio: http://localhost:9090/login
 
 Superset: http://localhost:8088/login/
+
+JupyterLab: http://localhost:8888/ (get the token from Docker, in container logs)
