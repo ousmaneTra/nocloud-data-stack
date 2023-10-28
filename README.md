@@ -25,18 +25,12 @@ $ cp ./superset/$STACK_ENV/.env.template ./superset/$STACK_ENV/.env && vim ./sup
 ### Volumes: in production, recommanded to store data on different disks
 ```sh
 $ cp volumes.template.yaml volumes-$STACK_ENV.yaml
-$ edit volumes-$STACK_ENV.yaml # set src on volumes
+$ edit volumes-$STACK_ENV.yaml # set 'device' path on volumes
 ```
 
 ### Verify configurations final_compose.yaml
 ```sh
 $ make verify # then open final_compose.yaml to verify
-```
-
-```sh
-$ cp .env.template .env && vim .env # set your env values
-$ cp ./superset/$STACK_ENV/.env.template ./superset/$STACK_ENV/.env # edit superset env depending on the value of STACK_ENV values in the previous .env
-$ make verify # verify 
 ```
 
 ## Run the stack
