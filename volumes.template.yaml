@@ -1,0 +1,44 @@
+volumes:
+  clickhouse_data:
+    driver: local
+    # driver_opts:
+    #   type: none
+    #   device: /media/warehouse/data
+    #   o: bind
+  clickhouse_logs:
+    driver: local
+    # driver_opts:
+    #   type: none
+    #   device: /media/warehouse/logs
+    #   o: bind
+  minio_data:
+    driver: local
+    # driver_opts:
+    #   type: none
+    #   device: /media/datalake
+    #   o: bind
+  mage_data:
+    driver: local
+    # driver_opts:
+    #   type: none
+    #   device: /media/data/mage
+    #   o: bind
+  superset_home:
+    external: false
+    # driver_opts:
+    #   type: none
+    #   device: /media/data/superset
+    #   o: bind
+  db_home:
+    external: false
+    # driver_opts:
+    #   type: none
+    #   device: /media/data/superset_db
+    #   o: bind
+  redis:
+    external: false
+    # driver_opts:
+    #   type: none
+    #   device: /media/data/superset_redis
+    #   o: bind
+

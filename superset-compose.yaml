@@ -91,11 +91,3 @@ services:
     volumes: *superset-volumes
     healthcheck:
       disable: true
-
-volumes:
-  superset_home:
-    external: false
-  db_home:
-    external: false
-  redis:
-    external: false
