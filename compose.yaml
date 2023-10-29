@@ -15,6 +15,10 @@ services:
     command: "/app/run_app.sh mage start ${MAGE_PROJECT_NAME}"
     environment:
       - "MAGE_DATA_DIR=${MAGE_DATA_DIR}"
+      - "CLICKHOUSE_HOST=clickhouse"
+      - "CLICKHOUSE_DATABASE=${CLICKHOUSE_DB}"
+      - "CLICKHOUSE_USERNAME=${CLICKHOUSE_USER}"
+      - "CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}"
   clickhouse:
     image: "clickhouse/clickhouse-server:${CLICKHOUSE_TAG}"
     container_name: clickhouse
