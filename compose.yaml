@@ -12,6 +12,7 @@ services:
     # image: "custom-mageai-spark:${MAGE_TAG}"
     image: "mageai/mageai:${MAGE_TAG}"
     container_name: mageai
+    restart: unless-stopped
     ports:
       - "6789:6789"
     volumes:
@@ -31,6 +32,7 @@ services:
   clickhouse:
     image: "clickhouse/clickhouse-server:${CLICKHOUSE_TAG}"
     container_name: clickhouse
+    restart: unless-stopped
     environment:
       - "CLICKHOUSE_DB=${CLICKHOUSE_DB}"
       - "CLICKHOUSE_USER=${CLICKHOUSE_USER}"
@@ -62,6 +64,7 @@ services:
   minio:
     image: "quay.io/minio/minio:${MINIO_TAG}"
     container_name: minio
+    restart: unless-stopped
     ports:
       - "29000:9000"
       - "9090:9090"
@@ -93,6 +96,7 @@ services:
         - "TAG=${JUPYTER_BASE_IMAGE_TAG}"
     image: "custom-jupyter:${JUPYTER_BASE_IMAGE_TAG}"
     container_name: jupyterlab
+    restart: unless-stopped
     ports:
       - "8888:8888"
     volumes:

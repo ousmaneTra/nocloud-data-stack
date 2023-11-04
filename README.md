@@ -2,7 +2,7 @@
 
 ## Requirements
 - docker
-- Linux shell
+- Linux shell (you can WSL/Debian on Windows)
 - make
 
 ## Components
@@ -14,9 +14,9 @@ Dataviz: Apache Superset
 Data Exploration/Science: JupyterLab
 
 
-## Configurations: set your set env (sensitive) variables 
+## Configurations
 
-### Set env variables
+### Set env variables : carrefully choose sensitive ones
 ```sh
 $ cp .env.template .env && vim .env # set your env values
 $ make .env.make && source .env.make # load env into current shell
