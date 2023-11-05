@@ -55,3 +55,16 @@ Minio: http://localhost:9090/login
 Superset: http://localhost:8088/login/
 
 JupyterLab: http://localhost:8888/ (get the token from Docker, in container logs)
+
+## Optional: Expose superset 
+
+We can securely expose a given service using Nginx + certbot + letsencrypt.
+
+Example for superset:
+
+```sh
+$ vim .env # set DOMAIN_NAME and CERT_EMAIL
+$ make .env.make && source .env.make # load env into current shell
+$ make nginx_init
+```
+Demo here : https://demo.graphzit.com/

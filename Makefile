@@ -24,5 +24,18 @@ images:
 verify:
 	$(DOCKER_COMPOSE_CMD) config > final_compose.yaml
 
+.PHONY: nginx_start
+nginx_start:
+	docker compose -f nginx-compose.yaml up --force-recreate -d
+
+.PHONY: nginx_stop
+nginx_stop:
+	docker compose -f nginx-compose.yaml down
+
+.PHONY: nginx_init
+nginx_init: nginx_stop
+	./init-letsencrypt.sh
+	docker compose -f nginx-compose.yaml up --force-recreate -d
+
 clean:
 	rm -rf .env.make
